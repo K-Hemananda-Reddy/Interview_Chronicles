@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap');
+.btns_link{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    border: none;
+    background:none;
+    text-decoration: underline;
+    /* color: rgb(76, 76, 233); */
+    color: #0d6efd;
+}
+
+.ttl{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    font-weight: bolder;
+    color:#404040;
+}
+.desc{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 18px;
+}
+.post_cont{
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+    margin: 4rem;
+    margin-bottom: 1.5em;
+}
+.read{
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+}
+

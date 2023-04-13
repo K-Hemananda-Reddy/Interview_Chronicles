@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Ubuntu:wght@300;400;500;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.title{
+    font-family: 'Oswald', sans-serif;
+    font-weight: bolder;
+    font-size: 1.75rem;
+    border: 2px solid white;
+    padding-left: 10px;
+    padding-right: 10px;
+    letter-spacing: 2px;
+}
+.crtpost{
+    background-color: #276678;
+    border: none;
+    font-weight: bolder;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.coll{
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: right;
+}
+
+@media screen and (max-width: 1000px) {
+    .coll{
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+.username{
+    font-family: 'roboto','sans serif';
+    font-weight: bolder;
+    letter-spacing: 1px;
+    font-size: 20px;
+}
+
+.crtpost:hover{
+    background-color: #57aac1;
+}
+
+.logout{
+    font-size: 25px;
+    cursor: pointer;
+}

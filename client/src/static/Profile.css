@@ -1,0 +1,33 @@
+.main-cont{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    /* background-color: rgb(240, 119, 13); */
+}
+.main-cont-sub{
+    width: 40%;
+    display: flex;
+    border-radius: 10px;
+    border: 2px double black;
+    /* background-color: aqua; */
+    margin:1rem 2rem;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+.cont-left img{
+    position: relative;
+    width: 70%;
+    height: 70%;
+}
+.posts{
+    font-size: 30px;
+    letter-spacing: 1rem;
+}
+.postsList{
+    /* background-color: aquamarine; */
+    margin-top: 2rem;
+    margin-left: 20rem;
+}

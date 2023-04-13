@@ -1,0 +1,52 @@
+.sidebar{
+    margin-top: 4.4rem;
+    max-width: 20vw;
+    background-color:#99ecff;
+
+}
+
+.butt{
+    position: relative;
+    margin: 2rem 5rem;
+    background-color: #276678;
+    color: white;
+}
+
+.butt:hover{
+    background-color: #57aac1;
+    color: white;
+}
+.search{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 3rem 0;
+    padding: 5px 10px;    
+
+}
+
+.boxx{
+    display: flex;
+}
+
+.boxx-1{
+    width: 20%;
+    background-color:#c8f5ff;
+}
+.boxx-2{
+    background-color:#c8f5ff;
+    width: 80%;
+}
+
+.search input{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: large;
+    width: 47%;
+    padding: 10px 10px;
+    border-radius: 9px 0 0 9px;
+}
+.search button{
+    padding: 5px 10px;
+    border-radius: 0 9px 9px 0;
+}
