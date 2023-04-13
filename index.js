@@ -1,9 +1,11 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+require("dotenv").config();
 const path=require('path')
 const ejs = require("ejs");
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
+// const PostController = require("./controllers/posts.controller");
 const cors=require('cors');
 const saltRounds = 10;
 const User = require("./models/User");
@@ -36,6 +38,8 @@ app.get("*", function (_, res) {
     }
   );
 });
+
+///getAllPosts,/user/:rollno,/post/:postid,/home,/login,/signup,/home/user/:rollno,/home/createpost,/home/post/:postid,/
 app.use(cors());
 app.use(express.static("public"));
 app.set("view engine", "ejs");
@@ -45,6 +49,7 @@ app.use(
   })
 );
 
+// app.use("/getAllPosts", PostController);
 mongoose.connect("mongodb+srv://ragulpretish:Ragul2002@cluster0.ciiiuso.mongodb.net/test", {
   useNewUrlParser: true,
 });
@@ -153,7 +158,7 @@ app.post("/create",fetchuser,async function(req, res){
 
 })
 
-app.get('/user/:rollno',fetchuser,async(req,res)=>{
+app.post('/user/:rollno',fetchuser,async(req,res)=>{
   try{
     const user =await User.findOne({rollno:req.params.rollno})
     const posts=await Post.find({rollno:req.params.rollno})
@@ -163,10 +168,11 @@ app.get('/user/:rollno',fetchuser,async(req,res)=>{
   }
 })
 
-app.get('/getAllPosts',fetchuser,async(req,res)=>{
+app.post('/getAllPosts',fetchuser,async(req,res)=>{
   try{
     
     const posts=await Post.find().sort({createdAt:-1}).limit(15)
+    // res.set('Content-Type', 'application/json')
     res.send({posts})
   }catch(err){
     console.log(err)
@@ -209,7 +215,7 @@ app.post('/getuser',fetchuser,async(req,res)=>{
   }
   })
 
-  app.get('/post/:postid',fetchuser,async(req,res)=>{
+  app.post('/post/:postid',fetchuser,async(req,res)=>{
     try{
       postId=req.params.postid;
       const post=await Post.findById(postId)

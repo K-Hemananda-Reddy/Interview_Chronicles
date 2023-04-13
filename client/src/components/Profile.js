@@ -19,7 +19,7 @@ export const Profile = (props) => {
       return;
     }
     const response = await fetch(`/user/${rollno}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         // 'Accept': 'application/json',
         'Content-Type': 'application/json',

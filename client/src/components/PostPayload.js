@@ -24,7 +24,7 @@ export const PostPayload = (props) => {
 
 
     const response = await fetch(`/post/${postid}`, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         // 'Accept': 'application/json',
         'Content-Type': 'application/json',
