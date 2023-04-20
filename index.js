@@ -225,7 +225,31 @@ app.post('/getuser',fetchuser,async(req,res)=>{
     }
   })
 
-  
+  app.post('/createComment',fetchuser,async(req,res)=>{
+  try{
+      postid=req.body.postid;
+      username=req.body.username
+      comment=req.body.comment
+      newComment = await Comment.create({
+          postid,
+          username,
+          comment
+      })
+      res.send(newComment);
+  }catch(err){
+    console.log(err);
+  }
+})
+
+app.post('/getComments',fetchuser,async(req,res)=>{
+    try{
+      postid=req.body.postid;
+      const comments=await Comment.find({postid});
+      res.send(comments)
+    }catch(err){
+      console.log(err);
+    }
+})
 
   
 

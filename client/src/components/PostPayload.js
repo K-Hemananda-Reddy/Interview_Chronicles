@@ -4,6 +4,8 @@ import { useParams, Link, useNavigate } from 'react-router-dom'
 import parse from 'html-react-parser'
 import "../static/PostPayload.css"
 import user_pic from "../static/img/user.jpg"
+import { Comment } from './Comment'
+import { ViewComment } from './ViewComment'
 
 export const PostPayload = (props) => {
   let { postid } = useParams();
@@ -14,6 +16,7 @@ export const PostPayload = (props) => {
   const [createdAt, setCreatedAt] = useState('');
   const [rollno, setRollno] = useState('');
   const Navigate = useNavigate();
+  const [comments,setComments]=useState([]);
   const getPost = async () => {
 
     if (!localStorage.getItem('token')) {
@@ -24,7 +27,7 @@ export const PostPayload = (props) => {
 
 
     const response = await fetch(`/post/${postid}`, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         // 'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -32,6 +35,10 @@ export const PostPayload = (props) => {
       },
 
     })
+
+    
+
+    
     const json = await response.json();
     setTitle(json.title);
     setContent(parse(json.content));
@@ -40,10 +47,31 @@ export const PostPayload = (props) => {
     setTags(json.tags);
     setUsername(json.username);
   }
+
+  const getComments=async()=>{
+    const response2 = await fetch(`/getComments`, {
+      method: 'POST',
+      headers: {
+        // 'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'auth-token': localStorage.getItem('token')
+      },
+      body: JSON.stringify({
+        postid,
+      }),
+    })
+    const json2=await response2.json();
+    setComments(json2)
+  }
+
   useEffect(() => {
     getPost();
   }, [])
+  useEffect(()=>{
+    getComments();
+  },[comments])
   return (
+    <>
     <div className='p-vessel'>
       <div className='vessel'>
         <div className='row-1'>
@@ -64,8 +92,20 @@ export const PostPayload = (props) => {
           <div className='row-2b'>
             <p className='tags'>#{tags}</p>
           </div>
+          <Comment postid={postid}/>
         </div>
       </div>
     </div>
+    {comments.map((doc) => {
+            return (
+              <ViewComment
+                username={doc.username}
+                content={doc.comment}
+              />
+            );
+          })}
+    </>
+
+
   )
 }
