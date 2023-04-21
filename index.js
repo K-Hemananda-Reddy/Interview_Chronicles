@@ -235,7 +235,7 @@ app.post('/getuser',fetchuser,async(req,res)=>{
           username,
           comment
       })
-      res.send(newComment);
+      res.send({newComment});
   }catch(err){
     console.log(err);
   }
@@ -245,7 +245,7 @@ app.post('/getComments',fetchuser,async(req,res)=>{
     try{
       postid=req.body.postid;
       const comments=await Comment.find({postid});
-      res.send(comments)
+      res.send({comments})
     }catch(err){
       console.log(err);
     }
